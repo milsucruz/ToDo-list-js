@@ -38,6 +38,14 @@ export function List() {
     setNewTaskText(event.target.value)
   }
 
+  function deleteTask(taskToDelete) {
+    const tasksWithoutDeleteOne = tasks.filter(task => {
+      return task != taskToDelete;
+    })
+
+    setTasks(tasksWithoutDeleteOne)
+  }
+
   let taskCounter = tasks.length;
   let taskIsCompletedCounter = tasks.filter(task => task.isCompleted).length
   
@@ -89,6 +97,7 @@ export function List() {
                     <Task
                       key={task.id}
                       content={task.content}
+                      onDeleteTask={deleteTask}
                       isCompleted
                     />
                   )

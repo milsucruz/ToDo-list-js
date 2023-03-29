@@ -1,11 +1,11 @@
 import styles from './task.module.css';
 import { CheckCircle, Circle, Trash } from 'phosphor-react';
 
-export function Task({id, content}) {
+export function Task({id, content, onDeleteTask}) {
 
   function handleDeletetask() {
     alert(`Task "${content}" removida da lista!`)
-    // onDeleteTask(id);
+    onDeleteTask(content);
   }
 
   return(
