@@ -1,5 +1,6 @@
 import styles from './task.module.css';
-import { CheckCircle, Circle, Trash } from 'phosphor-react';
+// import { CheckCircle, Circle, Trash } from 'phosphor-react';
+import {BsCheckCircleFill, BsCircle, FaRegTrashAlt} from 'react-icons/all';
 
 export function Task({id, content, onDeleteTask}) {
 
@@ -8,16 +9,18 @@ export function Task({id, content, onDeleteTask}) {
     onDeleteTask(content);
   }
 
+  const isCompleted = true;
+
   return(
     <div className={styles.taskWrapper} key={id} >
       <button className={styles.checkBtn} >
-        <Circle size={24} />
+        {isCompleted ? <BsCheckCircleFill size={22} className={styles.check} /> : <BsCircle size={22} />}
       </button>
 
       <p>{content}</p>
 
       <button className={styles.trashBtn} onClick={handleDeletetask}>
-        <Trash size={20} />
+        <FaRegTrashAlt size={20} />
       </button>
     </div>
   )

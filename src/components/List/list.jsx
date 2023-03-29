@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Task } from '../Task/task';
 
 import {v4 as uuidv4} from 'uuid'
-import { PlusCircle } from 'phosphor-react';
+import {AiOutlinePlusCircle} from 'react-icons/ai'
 
 import clipboard from '../../assets/clipboard.svg';
 
@@ -46,6 +46,10 @@ export function List() {
     setTasks(tasksWithoutDeleteOne)
   }
 
+  function checkTask() {
+
+  }
+
   let taskCounter = tasks.length;
   let taskIsCompletedCounter = tasks.filter(task => task.isCompleted).length
   
@@ -61,7 +65,7 @@ export function List() {
 
           <button type='submit' >
             Criar
-            <PlusCircle size={20} />
+            <AiOutlinePlusCircle size={20} />
           </button>
         </form>
       </div>
