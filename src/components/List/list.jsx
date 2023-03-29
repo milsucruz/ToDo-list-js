@@ -1,25 +1,52 @@
 import styles from './list.module.css';
-import { PlusCircle } from 'phosphor-react';
+import { useState } from 'react';
+
+import { Task } from '../Task/task';
 
 import {v4 as uuidv4} from 'uuid'
+import { PlusCircle } from 'phosphor-react';
 
 import clipboard from '../../assets/clipboard.svg';
 
-const tasks = [
-  {
-    id: uuidv4(),
-    content: "Aloo",
-    isCompleted: false
-  }
-]
-
 export function List() {
+  const [tasks, setTasks] = useState(
+    [
+      {
+        id: uuidv4(),
+        content: "Fica aí",
+        isCompleted: false
+      },
+    ]
+  )
+
+  const [newTaskText, setNewTaskText] = useState('');
+
+  function handleNewTask() {
+    event.preventDefault()
+    setTasks([
+      ...tasks, 
+      {
+        id: uuidv4(),
+        content: newTaskText,
+        isCompleted: false
+      }
+    ]);
+    setNewTaskText('');
+  }
+
+  function handleNewTaskChange() {
+    setNewTaskText(event.target.value)
+  }
   
   return(
     <div className={styles.wrapper} >
       <div className={styles.inputArea}>
-        <form className={styles.inputForm} >
-          <textarea placeholder='Adicione uma nova tarefa'/>
+        <form className={styles.inputForm} onSubmit={handleNewTask}>
+          <textarea 
+            placeholder='Adicione uma nova tarefa'
+            value={newTaskText}
+            onChange={handleNewTaskChange}
+          />
 
           <button type='submit' >
             Criar
@@ -42,13 +69,25 @@ export function List() {
 
         </div>
 
-        <div className={styles.emptyList} >
+        <div className={styles.taskList}>
+          {tasks.map(task => {
+            return(
+              <Task
+                key={task.id}
+                content={task.content}
+                isCompleted
+              />
+            )
+          })}
+        </div>
+
+        {/* <div className={styles.emptyList} >
           <img src={clipboard} alt="Prancheta" />
           <p>
             Você ainda não tem tarefas cadastradas<br/>
             <span>Crie tarefas e organize seus itens a fazer</span>
           </p>
-        </div>
+        </div> */}
 
     </div>
   )
