@@ -37,7 +37,7 @@ export function List() {
   function handleNewTaskChange() {
     setNewTaskText(event.target.value)
   }
-  
+
   return(
     <div className={styles.wrapper} >
       <div className={styles.inputArea}>
@@ -69,26 +69,29 @@ export function List() {
 
         </div>
 
-        <div className={styles.taskList}>
-          {tasks.map(task => {
-            return(
-              <Task
-                key={task.id}
-                content={task.content}
-                isCompleted
-              />
-            )
-          })}
-        </div>
-
-        {/* <div className={styles.emptyList} >
-          <img src={clipboard} alt="Prancheta" />
-          <p>
-            Você ainda não tem tarefas cadastradas<br/>
-            <span>Crie tarefas e organize seus itens a fazer</span>
-          </p>
-        </div> */}
-
+        {tasks.length == 0 
+          ? (
+              <div className={styles.emptyList} >
+                <img src={clipboard} alt="Prancheta" />
+                <p>
+                  Você ainda não tem tarefas cadastradas<br/>
+                  <span>Crie tarefas e organize seus itens a fazer</span>
+                </p>
+              </div>
+            ) 
+          : (
+              <div className={styles.taskList}>
+                {tasks.map(task => {
+                  return(
+                    <Task
+                      key={task.id}
+                      content={task.content}
+                      isCompleted
+                    />
+                  )
+                })}
+              </div>
+            )}
     </div>
   )
 } 
