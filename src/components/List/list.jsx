@@ -40,7 +40,7 @@ export function List() {
 
   function deleteTask(taskToDelete) {
     const tasksWithoutDeleteOne = tasks.filter(task => {
-      return task != taskToDelete;
+      return task.content != taskToDelete;
     })
 
     setTasks(tasksWithoutDeleteOne)
