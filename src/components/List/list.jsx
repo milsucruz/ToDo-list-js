@@ -38,6 +38,9 @@ export function List() {
     setNewTaskText(event.target.value)
   }
 
+  let taskCounter = tasks.length;
+  let taskIsCompletedCounter = tasks.filter(task => task.isCompleted).length
+  
   return(
     <div className={styles.wrapper} >
       <div className={styles.inputArea}>
@@ -59,12 +62,12 @@ export function List() {
 
           <div className={styles.infos} >
             <p>Tarefas criadas</p>
-            <span>2</span>
+            <span>{taskCounter}</span>
           </div>
 
           <div className={styles.infos}>
             <p>Concluídas </p>
-            <span>1 de 2</span>
+            <span>{taskIsCompletedCounter} de {taskCounter}</span>
           </div>
 
         </div>
