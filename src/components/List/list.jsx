@@ -9,15 +9,7 @@ import {AiOutlinePlusCircle} from 'react-icons/ai'
 import clipboard from '../../assets/clipboard.svg';
 
 export function List() {
-  const [tasks, setTasks] = useState(
-    [
-      {
-        id: uuidv4(),
-        content: "Fica aí",
-        isCompleted: false
-      },
-    ]
-  )
+  const [tasks, setTasks] = useState([])
 
   const [newTaskText, setNewTaskText] = useState('');
 
@@ -46,9 +38,19 @@ export function List() {
     setTasks(tasksWithoutDeleteOne)
   }
 
-  function checkTask() {
-
+  function toggleCheckTask(taskToCheck) {
+    const completedTasks = tasks.map(task => {
+      if(task.content == taskToCheck) {
+        return{
+          ...task,
+          isCompleted: !task.isCompleted
+        }
+      }
+      return task;
+    })
+    setTasks(completedTasks)
   }
+
 
   let taskCounter = tasks.length;
   let taskIsCompletedCounter = tasks.filter(task => task.isCompleted).length
@@ -102,7 +104,8 @@ export function List() {
                       key={task.id}
                       content={task.content}
                       onDeleteTask={deleteTask}
-                      isCompleted
+                      isCompleted={task.isCompleted}
+                      onCheckTask={toggleCheckTask}
                     />
                   )
                 })}
