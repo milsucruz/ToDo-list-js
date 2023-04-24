@@ -4,7 +4,7 @@
 > ## Sobre 📖
 > 
 > ### ToDo List 📃
-> O ToDo List é um desafio do programa Ignite da Rocketseat, temo como objetivo avançar as habilidades em React. O projeto consiste em uma lista de tarefas, onde é possível organizar e criar suas tarefas!
+> O ToDo List é um desafio do programa Ignite da Rocketseat, tem como objetivo avançar as habilidades em React. O projeto consiste em uma lista de tarefas, onde é possível organizar e criar suas tarefas!
 >
 > ## Tecnologias utilizadas 💻
 > 
